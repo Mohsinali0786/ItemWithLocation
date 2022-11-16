@@ -1,12 +1,12 @@
 const moongoose=require('mongoose')
-const { STRING_REQUIRED, STRING, BOOLEAN_DEFAULT,NUMBER_REQUIRED} = require('./schematypes')
+const { STRING_REQUIRED, STRING, BOOLEAN_DEFAULT,NUMBER_REQUIRED} = require('./SchemaType')
 
-const userSchema=moongoose.Schema({
+const itemSchema=moongoose.Schema({
     image:STRING_REQUIRED,
     description:STRING_REQUIRED,
     latitude:NUMBER_REQUIRED,
     longitude: NUMBER_REQUIRED,
 })
 
-let User=moongoose.model("User",userSchema);
-module.exports=User
+let Item=moongoose.model("Items",itemSchema);
+module.exports=Item

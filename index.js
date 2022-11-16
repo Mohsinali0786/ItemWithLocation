@@ -3,7 +3,9 @@ const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
 const server = require('http').createServer(app)
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
+const cloudinary = require('cloudinary')
+
 // const { mongoose } = require('./config')
 
 require('dotenv').config()
@@ -11,11 +13,18 @@ const PORT = process.env.PORT || 4000
 
 
 mongoose.connect(process.env.DB_URI)
-    .then(() => {
-        console.log('Database Connected')
-    }).catch((err) => {
-        console.log('Err===>', err)
-    })
+  .then(() => {
+    console.log('Database Connected')
+  }).catch((err) => {
+    console.log('Err===>', err)
+  })
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+  // secure: true
+});
 // var db = mongoose.connection
 // db.on('error', (err) => {
 //   console.log('err', err)
