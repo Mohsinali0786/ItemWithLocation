@@ -1,7 +1,7 @@
-const Users = require('./Users')
+const Item = require('./Item')
 const SchemaType = require('./SchemaType')
 
 module.exports = {
-    Users,
+    Item,
     SchemaType
 }

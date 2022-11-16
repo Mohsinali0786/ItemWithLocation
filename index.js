@@ -3,47 +3,38 @@ const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
 const server = require('http').createServer(app)
-const { mongoose } = require('./config')
-const io = require('socket.io')(server, {
-  cors: {
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST']
-  }
-})
+const mongoose=require('mongoose')
+// const { mongoose } = require('./config')
 
 require('dotenv').config()
-
 const PORT = process.env.PORT || 4000
 
-var db = mongoose.connection
-db.on('error', (err) => {
-  console.log('err', err)
-})
 
-db.on('open', function () {
-  console.log('DB running')
-})
+mongoose.connect(process.env.DB_URI)
+    .then(() => {
+        console.log('Database Connected')
+    }).catch((err) => {
+        console.log('Err===>', err)
+    })
+// var db = mongoose.connection
+// db.on('error', (err) => {
+//   console.log('err', err)
+// })
 
-io.on('connection', (socket) => {
-  console.log('a user connected', socket.id)
-  socket.on('disconnect', () => {
-    console.log('user disconnected')
-  })
-})
-
+// db.on('open', function () {
+//   console.log('DB running')
+// })
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
 
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, './client/build')))
 
 app.use('/api', require('./routes'))
 
-//set a static folder
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'))
-})
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, './client/build/index.html'))
+// })
 
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({
