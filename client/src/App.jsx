@@ -7,16 +7,7 @@ import './App.css'
 import 'antd/dist/antd.min.css'
 import UploadImageComponent from './Components/uploadimage/uploadimg'
 import {Home} from './Screens/index'
-AOS.init()
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#007aff',
-      secondMain: '#1890ff'
-    }
-  }
-})
+// AOS.init()
 
 const App = () => {
 
@@ -25,10 +16,10 @@ const App = () => {
       {/* <ThemeProvider theme={theme}> */}
         <Routes />
         <Home/>
-        {/* <UploadImageComponent/> */}
+        <UploadImageComponent/>
       {/* </ThemeProvider> */}
     </div>
   )
 }
 
-export default hot(App)
+export default App

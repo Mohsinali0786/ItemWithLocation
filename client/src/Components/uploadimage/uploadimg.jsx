@@ -2,24 +2,29 @@
 // import { Button, message, Upload } from 'antd';
 import { Button } from '@mui/material';
 import axios from "axios"
-import { useDispatch ,useSelector} from 'react-redux';
-import {get_Img_url} from '../../Redux/actions'
+import { useDispatch, useSelector } from 'react-redux';
+import { get_Img_url } from '../../Redux/actions'
 import { useState } from "react"
+import { POST } from '../../utils/apis'
 
 function UploadImageComponent() {
-    console.log('mysatte',useSelector((state)=>state))
-    const dispatch=useDispatch()
+    console.log('mysatte', useSelector((state) => state))
+    const dispatch = useDispatch()
     const [imageSelected, setImageSelected] = useState("")
 
     const upload_img = () => {
         const formdata = new FormData()
         formdata.append("file", imageSelected)
         formdata.append("upload_preset", "ml_default")
-        console.log('path', formdata)
-        console.log('imageSelected', imageSelected)
-        axios.post('http://localhost:4000/api/post/uploadimage', formdata)
+
+        // for (const value of formdata.values()) {
+        //     console.log("OBJ", value)
+        // }
+        // console.log('path', formdata)
+        // console.log('imageSelected', imageSelected)
+        axios.post(`${POST?.UPLOADIMAGE}`, formdata)
             .then((res) => {
-                if(res.data.success===true){
+                if (res.data.success === true) {
                     alert('succesfully uploaded')
                     console.log("res.result", res.data.result);
                     dispatch(get_Img_url(res.data.result))
@@ -32,7 +37,7 @@ function UploadImageComponent() {
     }
     return (
         <div className='uploadImage-mainDiv'>
-            
+
             <input type='file'
                 onChange={(e) => { setImageSelected(e?.target?.files[0]) }}
             />
