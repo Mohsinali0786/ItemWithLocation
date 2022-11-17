@@ -56,8 +56,8 @@ const Home = (props) => {
                         </div>
                         <div className='modal_div' id='modal-modal-description'>
                             <input className='inp' value={description} placeholder='Description' onChange={(e) => { setDescription(e.target.value) }} />
-                            <input className='inp' value={longitude} placeholder='Longitude' onChange={(e) => { setLongitude(e.target.value) }} />
-                            <input className='inp' value={latitude} placeholder='Latitude' onChange={(e) => { setLatitude(e.target.value) }} />
+                            {/* <input className='inp' value={longitude} placeholder='Longitude' onChange={(e) => { setLongitude(e.target.value) }} />
+                            <input className='inp' value={latitude} placeholder='Latitude' onChange={(e) => { setLatitude(e.target.value) }} /> */}
                         </div>
                         <div className='btn_div'>
                             <button className='btn cancel_btn' onClick={handleClose}>Cancel</button>
