@@ -1,11 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const {addItem} = require('../controllers/post')
+const {addItem,uploadImage} = require('../controllers/post')
 
 
 router.post('/additems', addItem)
-
-// routes.post('/uploadimage', uploadImage)
-
+router.post('/uploadimage', uploadImage)
 
 module.exports = router

@@ -5,6 +5,10 @@ const path = require('path')
 const server = require('http').createServer(app)
 const mongoose = require('mongoose')
 const cloudinary = require('cloudinary')
+const cors = require('cors')
+const fileupload = require('express-fileupload'); 
+
+
 
 // const { mongoose } = require('./config')
 
@@ -35,9 +39,12 @@ cloudinary.config({
 // })
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
+app.use(fileupload({useTempFiles: true}))
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, './client/build')))
+app.use(cors());
 
 app.use('/api', require('./routes'))
 

@@ -44,17 +44,7 @@ const addItem = async (req, res) => {
 
 const uploadImage = async (req, res) => {
     const file = req.files.file.tempFilePath
-    console.log('req.files', file)
-    const { formdata } = req.body
-    // const file_Name=req.file
-    // console.log('file_Name', req.body.path)
-    // console.log('formdata', formdata)
-
-    const options = {
-        use_filename: true,
-        unique_filename: false,
-        overwrite: true,
-    };
+    // console.log('req.files', req.files)
     try {
         const result = await cloudinary.uploader.upload(req.files.file.tempFilePath, function (err, result) {
             

@@ -1,4 +1,5 @@
+const UPLOADTEAMIMAGE='UPLOADTEAMIMAGE'
 
 export {
-    
+    UPLOADTEAMIMAGE
 }

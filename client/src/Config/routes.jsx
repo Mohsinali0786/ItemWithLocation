@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import {  } from '../Screens'
-import { MenuLayout } from '../Components'
-import allPaths from './paths'
+
 import { Result, Button } from 'antd'
 
 const Page404 = (props) => {
