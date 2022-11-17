@@ -120,7 +120,7 @@ html {
 
 .text_area:focus {
     border: 1px solid aqua;
-    box-shadow: blue 0px 0px 2px;
+    box-shadow: aqua 0px 0px 2px;
     outline: none;
 }
 
@@ -130,13 +130,13 @@ html {
 }
 
 .ant-upload.ant-upload-select:hover {
-    border: 1px dotted aqua !important;
+    border: 1px dashed aqua !important;
 }
 
 .ant-modal-content {
     background-color: none !important;
     /* background: linear-gradient(to top, black, gray); */
-    background-image: url("https://t4.ftcdn.net/jpg/04/22/15/03/240_F_422150309_7tWnPvl74aY4IH7Dz1DLu9alajW54a52.jpg") !important;
+    background-image: url("https://img.freepik.com/free-photo/plain-dark-black-wall-product-background_53876-129678.jpg") !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
 }
