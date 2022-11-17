@@ -105,15 +105,21 @@ html {
 .text_area {
     margin-top: 4%;
     width: 100%;
-    border: 1px solid gray;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
 }
 
 .text_area:hover {
-    border: 1px solid blue;
+    border: 1px solid aqua;
+}
+
+.ant-modal-body {
+    padding: 24px 24px 12px 24px !important;
 }
 
 .text_area:focus {
-    border: 1px solid blue;
+    border: 1px solid aqua;
     box-shadow: blue 0px 0px 2px;
     outline: none;
 }
@@ -122,54 +128,72 @@ html {
     height: 5vh;
     width: 25%;
 }
-.ant-modal-content{
-    background-color: none !important;
-    background: linear-gradient(to top, black, gray);
-    /* background-image: url("https://img.freepik.com/free-vector/seamless-gold-rhombus-grid-pattern-black-background_53876-97589.jpg?w=900&t=st=1668673472~exp=1668674072~hmac=0487ffcb1c3d8ed1a4e080509d16793a9447a1db3ee36c93bde98ab5cb32b005") !important; */
+
+.ant-upload.ant-upload-select:hover {
+    border: 1px dotted aqua !important;
 }
-.ant-modal-title{
+
+.ant-modal-content {
+    background-color: none !important;
+    /* background: linear-gradient(to top, black, gray); */
+    background-image: url("https://t4.ftcdn.net/jpg/04/22/15/03/240_F_422150309_7tWnPvl74aY4IH7Dz1DLu9alajW54a52.jpg") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.ant-btn {
+    color: white !important;
+    background-color: transparent !important;
+}
+
+.ant-modal-footer .ant-btn+.ant-btn:not(.ant-dropdown-trigger) {
+    border: 1px solid white !important;
+}
+
+.ant-modal-footer .ant-btn+.ant-btn:not(.ant-dropdown-trigger):hover {
+    border: 1px solid aqua !important;
+}
+
+.ant-upload.ant-upload-select-picture-card {
+    background-color: transparent !important;
+}
+
+.ant-upload.ant-upload-select-picture-card>.ant-upload {
     color: white !important;
 }
-.ant-modal-header{
+
+.ant-upload.ant-upload-select-picture-card>.ant-upload:hover {
+    color: aqua !important;
+}
+
+.ant-modal-title {
+    color: white !important;
+}
+
+.ant-btn:hover {
+    border: 1px solid aqua !important;
+    color: aqua !important;
+}
+
+.ant-modal-close {
+    color: white !important;
+}
+
+.ant-modal-close:hover {
+    color: aqua !important;
+}
+
+.ant-modal-header {
     border-bottom: none !important;
     background-color: transparent !important;
     /* color: none !important; */
 }
-.ant-modal-footer{
-    padding: 24px 21px !important;
-}
-.cancel_btn {
-    background: #ff4d4f;
-    border: 1px solid #ff4d4f;
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-}
 
-.cancel_btn:hover,
-.cancel_btn:active {
-    background-color: initial;
-    background-position: 0 0;
-    color: #ff4d4f;
-}
-
-.ok_btn {
-    background: rgb(43, 43, 255);
-    border: 1px solid rgb(43, 43, 255);
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
-.ok_btn:hover,
-.ok_btn:active {
-    background-color: initial;
-    background-position: 0 0;
-    color: rgb(43, 43, 255);
+.ant-modal-footer {
+    border-top: none !important;
+    /* padding: 24px 21px !important; */
+    padding-bottom: 24px !important;
+    padding-right: 22px !important;
 }
 
 @media(max-width: 1200px) {

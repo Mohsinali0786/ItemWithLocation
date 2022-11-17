@@ -24,7 +24,7 @@ const Home = () => {
                     <UploadImage/>
                 </div>
                 <div className='modal_div' id='modal-modal-description'>
-                <textarea className='text_area' rows="4" cols="70" value={description} placeholder='........' onChange={(e) => { setDescription(e.target.value) }} />
+                <textarea className='text_area' rows="4" cols="70" value={description} onChange={(e) => { setDescription(e.target.value) }} />
                     {/* <input className='inp' value={longitude} placeholder='Longitude' onChange={(e) => { setLongitude(e.target.value) }} />
                             <input className='inp' value={latitude} placeholder='Latitude' onChange={(e) => { setLatitude(e.target.value) }} /> */}
                 </div>
