@@ -19,8 +19,8 @@ const Home = () => {
     };
     return (
         <>
-            {/* <Map />
-            <MyGoogleLogin/> */}
+            <Map />
+            <MyGoogleLogin/>
             <Button type="primary" onClick={showModal}>
                 Open Modal
             </Button>
