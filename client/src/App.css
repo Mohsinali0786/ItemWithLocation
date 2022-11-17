@@ -82,7 +82,56 @@ html {
 .form-button:hover {
     border-color: #4bb146 !important;
 }
-
+/* modal css */
+.modal_div , .img_div{
+    text-align: center;
+}
+.btn_div{
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 10%;
+}
+.inp {
+    height: 5vh;
+    width: 80%;
+    margin-top: 5%;
+}
+.btn{
+  height: 5vh;
+  width: 25%;
+}
+.cancel_btn {
+    background: #ff4d4f;
+    border: 1px solid #ff4d4f;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.cancel_btn:hover,
+.cancel_btn:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #ff4d4f;
+}
+.ok_btn {
+    background: rgb(43, 43, 255);
+    border: 1px solid rgb(43, 43, 255);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.ok_btn:hover,
+.ok_btn:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: rgb(43, 43, 255);
+}
 @media(max-width: 1200px) {
     .card {
         width: 45%;

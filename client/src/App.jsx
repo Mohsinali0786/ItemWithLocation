@@ -5,6 +5,8 @@ import { Routes } from './Config/routes'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import './App.css'
 import 'antd/dist/antd.min.css'
+import Home from './Screens/Home/Home'
+import UploadImage from './Components/UploadFile/uploader'
 
 AOS.init()
 
@@ -21,9 +23,10 @@ const App = () => {
 
   return (
     <div>
+      <Home/>
       {/* <ThemeProvider theme={theme}> */}
-        <Routes />
-        HELLO USER....
+        {/* <Routes />
+        HELLO USER.... */}
       {/* </ThemeProvider> */}
     </div>
   )
