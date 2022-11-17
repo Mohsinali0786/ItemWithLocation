@@ -1,19 +1,16 @@
-const {Item}=require('../model')
+const { Item } = require('../model')
 const getItems = async (req, res) => {
     try {
-        const MyItem = await Item.find({})
-        console.log('Item',MyItem)
-        if (MyItem) {
-            res.send({ status: 'success', MyItem })
-        }
-        else {
-            res.send({
-                message: "Error in data receiving"
-            })
-        }
+        Item.find({}, async (err, data) => {
+            if (err || !data) {
+                return res.send({ success: false, message: 'No user found!' })
+            }
+            return res.send({ success: true, data })
+        })
     }
     catch (err) {
         console.log('err', err)
+        return res.send({ success: false, message: 'Oops Something Went Wrong!' })
     }
 }
 
