@@ -83,6 +83,119 @@ html {
     border-color: #4bb146 !important;
 }
 
+/* modal css */
+.modal_div,
+.img_div {
+    text-align: center;
+}
+
+.btn_div {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 10%;
+}
+
+/* .inp {
+    height: 5vh;
+    width: 80%;
+    margin-top: 5%;
+} */
+.text_area {
+    margin-top: 4%;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.text_area:hover {
+    border: 1px solid aqua;
+}
+
+.ant-modal-body {
+    padding: 24px 24px 12px 24px !important;
+}
+
+.text_area:focus {
+    border: 1px solid aqua;
+    box-shadow: aqua 0px 0px 2px;
+    outline: none;
+}
+
+.btn {
+    height: 5vh;
+    width: 25%;
+}
+
+.ant-upload.ant-upload-select:hover {
+    border: 1px dashed aqua !important;
+}
+
+.ant-modal-content {
+    background-color: none !important;
+    /* background: linear-gradient(to top, black, gray); */
+    background-image: url("https://img.freepik.com/free-photo/plain-dark-black-wall-product-background_53876-129678.jpg") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.ant-btn {
+    color: white !important;
+    background-color: transparent !important;
+}
+
+.ant-modal-footer .ant-btn+.ant-btn:not(.ant-dropdown-trigger) {
+    border: 1px solid white !important;
+}
+
+.ant-modal-footer .ant-btn+.ant-btn:not(.ant-dropdown-trigger):hover {
+    border: 1px solid aqua !important;
+}
+
+.ant-upload.ant-upload-select-picture-card {
+    background-color: transparent !important;
+}
+
+.ant-upload.ant-upload-select-picture-card>.ant-upload {
+    color: white !important;
+}
+
+.ant-upload.ant-upload-select-picture-card>.ant-upload:hover {
+    color: aqua !important;
+}
+
+.ant-modal-title {
+    color: white !important;
+}
+
+.ant-btn:hover {
+    border: 1px solid aqua !important;
+    color: aqua !important;
+}
+
+.ant-modal-close {
+    color: white !important;
+}
+
+.ant-modal-close:hover {
+    color: aqua !important;
+}
+
+.ant-modal-header {
+    border-bottom: none !important;
+    background-color: transparent !important;
+    /* color: none !important; */
+}
+
+.ant-modal-footer {
+    border-top: none !important;
+    /* padding: 24px 21px !important; */
+    padding-bottom: 24px !important;
+    padding-right: 22px !important;
+}
+
 @media(max-width: 1200px) {
     .card {
         width: 45%;

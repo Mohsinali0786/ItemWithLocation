@@ -6,18 +6,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import './App.css'
 import 'antd/dist/antd.min.css'
 import UploadImageComponent from './Components/uploadimage/uploadimg'
-import {Home} from './Screens/index'
+import Home from './Screens/Home/Home'
 // AOS.init()
 
 const App = () => {
 
   return (
     <div>
-      {/* <ThemeProvider theme={theme}> */}
-        <Routes />
-        <Home/>
-        <UploadImageComponent/>
-      {/* </ThemeProvider> */}
+      <Home />
     </div>
   )
 }
