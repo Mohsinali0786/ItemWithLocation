@@ -1,8 +1,12 @@
 const getApi = `/api/get`
 const postApi = `/api/post`
+const authApi='api/auth'
 
 
 
+const AUTH = {
+    REGISTER:`${authApi}/register`
+}
 const GET = {
     GETITEMS:`${getApi}/getitems`
 }
@@ -15,5 +19,6 @@ const POST = {
 
 export {
     GET,
-    POST
+    POST,
+    AUTH
 }

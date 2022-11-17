@@ -6,5 +6,7 @@ const router = express.Router()
 router.use('/post', require('./post'))
 
 router.use('/get', require('./get'))
+router.use('/auth', require('./auth'))
+
 
 module.exports = router

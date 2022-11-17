@@ -4,8 +4,8 @@ import useGeolocation from "react-hook-geolocation";
 import { get_lat_long } from '../../Redux/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
 const containerStyle = {
-    width: '400px',
-    height: '400px'
+    width: '95vw',
+    height: '75vh'
 };
 
 function MyComponent() {
@@ -57,33 +57,37 @@ function MyComponent() {
     }, [])
     const handleActiveMarker = (marker) => {
         if (marker === activeMarker) {
-          return;
+            return;
         }
         setActiveMarker(marker);
-      };
+    };
 
     return isLoaded ? (
+        <div className='googlemapMainDiv'>
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={10}
+                onLoad={onLoad}
+                onUnmount={onUnmount}
+                className='mymapcss'
+            >
+                <></>
 
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={10}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-        >
-            <></>
-
-            <Marker onClick={() => handleActiveMarker(0)}position={{ lat: Number(geolocation.latitude), lng: Number(geolocation.longitude) }} >
-                {activeMarker===0 /*<== add id here */? (
-                    <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                        <div>Hello</div>
-                    </InfoWindow>
-                ) : null}
+                <Marker onClick={() => handleActiveMarker(0)} position={{ lat: Number(geolocation.latitude), lng: Number(geolocation.longitude) }} >
+                    {activeMarker === 0 /*<== add id here */ ? (
+                        <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                            <div>Hello</div>
+                        </InfoWindow>
+                    ) : null}
 
 
-            </Marker>
-            {/* <Marker position={{ lng: 67.0583857 ,lat:24.887913  }} /> */}
-        </GoogleMap>
+                </Marker>
+                {/* <Marker position={{ lng: 67.0583857 ,lat:24.887913  }} /> */}
+            </GoogleMap>
+
+        </div>
+
     ) :
         <></>
 }

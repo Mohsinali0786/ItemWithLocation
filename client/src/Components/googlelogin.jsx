@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import GoogleLogin from 'react-google-login';
 import { googleClientId } from '../utils/constants'
+import { AUTH } from '../utils/apis'
+import axios from 'axios';
+import Swal from 'sweetalert2'
 
 export default function MyGoogleLogin() {
     const [logindata, setLogindata] = useState(false)
@@ -9,6 +12,28 @@ export default function MyGoogleLogin() {
     }
     const handleLogin = (response) => {
         console.log('response', response);
+        let userdata = {
+            google_id: response.googleId,
+            name: response.profileObj.name,
+            email: response.profileObj.email
+        }
+        axios.post(AUTH?.REGISTER, userdata)
+            .then((res) => {
+                if (res.data.success === true) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Congratulation...',
+                        text: res.data.message,
+                    })
+                }
+                else {
+
+                  console.log(res.data.logininfo)
+                }
+            })
+            .catch((err) => {
+                console.log('err===>', err)
+            })
 
     }
     const handleLogout = (response) => {
@@ -30,10 +55,12 @@ export default function MyGoogleLogin() {
             }
             <GoogleLogin
                 clientId={googleClientId}
-                buttonText="Google"
+                buttonText="Login With Google"
                 onSuccess={handleLogin}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
+                className='googleloginbtn'
+               
             />
         </div>
     )
