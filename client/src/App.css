@@ -122,6 +122,19 @@ html {
     height: 5vh;
     width: 25%;
 }
+.ant-modal-content{
+    background-color: none !important;
+    background: linear-gradient(to top, black, gray);
+    /* background-image: url("https://img.freepik.com/free-vector/seamless-gold-rhombus-grid-pattern-black-background_53876-97589.jpg?w=900&t=st=1668673472~exp=1668674072~hmac=0487ffcb1c3d8ed1a4e080509d16793a9447a1db3ee36c93bde98ab5cb32b005") !important; */
+}
+.ant-modal-title{
+    color: white !important;
+}
+.ant-modal-header{
+    border-bottom: none !important;
+    background-color: transparent !important;
+    /* color: none !important; */
+}
 .ant-modal-footer{
     padding: 24px 21px !important;
 }
