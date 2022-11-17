@@ -1,5 +1,5 @@
-import authReducer from './authReducer'
+import itemReducer from './itemReducer'
 
 export {
-    authReducer
+    itemReducer
 }
