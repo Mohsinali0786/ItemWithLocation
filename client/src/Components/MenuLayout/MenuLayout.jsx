@@ -1,5 +1,5 @@
 import React from 'react'
-import { SideMenu } from '../'
+// import { SideMenu } from '../'
 import { useSelector } from 'react-redux'
 
 const MenuLayout = ({ component: Component, ...props }) => {
@@ -15,7 +15,7 @@ const MenuLayout = ({ component: Component, ...props }) => {
         <div className='helper-main'>
             {/* <Header {...props} /> */}
             <div className='menu-flex'>
-                <SideMenu {...props} />
+                {/* <SideMenu {...props} /> */}
                 <div className='helper-comp'>
                     <Component {...props} />
                 </div>
