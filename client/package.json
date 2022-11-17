@@ -23,6 +23,7 @@
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react": "^18.0.0",
+    "react-animated-modal": "^1.1.1",
     "react-dom": "^18.0.0",
     "react-hot-loader": "^4.13.0",
     "react-lottie": "^1.2.3",
@@ -39,7 +40,6 @@
     "workbox-routing": "^6.1.5",
     "workbox-strategies": "^6.1.5"
   },
-  
   "browserslist": {
     "production": [
       ">0.2%",
