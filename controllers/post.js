@@ -42,8 +42,10 @@ const uploadImage = async (req, res) => {
         console.error('Err in upload', error);
     }
 };
+
 module.exports = {
     addItem,
-    uploadImage
+    uploadImage,
+    
 
 }

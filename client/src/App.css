@@ -195,7 +195,24 @@ html {
     padding-bottom: 24px !important;
     padding-right: 22px !important;
 }
-
+.mymapcss{
+    width: 100% !important;
+}
+.mainHomeDiv{
+    text-align: center;
+}
+.googlemapMainDiv{
+    margin-left: 2%;
+}
+.googleloginbtn{
+    width: 20% !important;
+    background-color: black !important;
+    color: white !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    font-size:large !important;
+    margin-top: 3%;
+}
 @media(max-width: 1200px) {
     .card {
         width: 45%;
