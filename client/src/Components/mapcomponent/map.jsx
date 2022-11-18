@@ -13,7 +13,8 @@ function MyComponent() {
     const [activeMarker, setActiveMarker] = useState(null);
 
     const state = useSelector((state) => state)
-    console.log('state', state)
+    console.log('state', state.itemReducer?.allItems)
+    const allItems = state.itemReducer?.allItems
     const geolocation = useGeolocation();
     console.log('geolocation.longitude', geolocation.longitude, geolocation.latitude)
     const [center, setCenter] = useState({
@@ -75,16 +76,21 @@ function MyComponent() {
                 className='mymapcss'
             >
                 <></>
+                {
+                    // allItems.map((v)=>{
+                    //     return()
+                    // })
+                    <Marker onClick={() => handleActiveMarker(0)} position={{ lat: Number(geolocation.latitude), lng: Number(geolocation.longitude) }} >
+                        {activeMarker === 0 /*<== add id here */ ? (
+                            <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                                <div>Hello</div>
+                            </InfoWindow>
+                        ) : null}
 
-                <Marker onClick={() => handleActiveMarker(0)} position={{ lat: Number(geolocation.latitude), lng: Number(geolocation.longitude) }} >
-                    {activeMarker === 0 /*<== add id here */ ? (
-                        <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                            <div>Hello</div>
-                        </InfoWindow>
-                    ) : null}
 
+                    </Marker>
 
-                </Marker>
+                }
                 {/* <Marker position={{ lng: 67.0583857 ,lat:24.887913  }} /> */}
             </GoogleMap>
 

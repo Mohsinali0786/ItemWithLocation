@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 // import UploadImage from '../../Components/UploadFile/uploader'
 import Map from '../../Components/mapcomponent/map'
-import MyGoogleLogin from '../../Components/googlelogin'
 import ItemModal from '../../Components/modal/itemmodal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -19,7 +18,7 @@ const Home = () => {
         <div className="mainHomeDiv">
             <Header/>
             <Map />
-            <MyGoogleLogin />
+            {/* <MyGoogleLogin /> */}
             <ItemModal />
 
         </div>

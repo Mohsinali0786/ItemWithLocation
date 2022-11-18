@@ -3,6 +3,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { isLoggedin } from '../../Redux/actions'
 import Swal from 'sweetalert2'
 import { LogoutMessage } from '../../utils/helpers'
+import MyGoogleLogin from '../googlelogin'
+
 
 function Header() {
     const ISLOGGEDIN = useSelector((state) => state.itemReducer?.ISLOGGEDIN)
@@ -23,7 +25,7 @@ function Header() {
                         <LogoutIcon onClick={() => { logout() }} />
                     </div>
                     :
-                    null
+                    <MyGoogleLogin/>
             }
 
         </div>

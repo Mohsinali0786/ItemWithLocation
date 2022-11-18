@@ -5,12 +5,14 @@ import { AUTH } from '../utils/apis'
 import axios from 'axios';
 import Swal from 'sweetalert2'
 import { isLoggedin } from '../Redux/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector} from 'react-redux';
 import {loginUserData} from '../Redux/actions'
 import {getallData} from '../utils/helpers'
 export default function MyGoogleLogin() {
     const [logindata, setLogindata] = useState(false)
     const dispatch=useDispatch()
+    const userid = useSelector((state) => state.itemReducer.LOGINUSER?._id)
+
     const responseGoogle = (response) => {
         console.log('failure', response);
     }
@@ -43,7 +45,7 @@ export default function MyGoogleLogin() {
                     })
                     dispatch(isLoggedin(true))
                     dispatch(loginUserData(res.data.logininfo))
-                    getallData(dispatch)
+                    getallData(dispatch,userid)
                 }
                 // getallData(dispatch)
             })
@@ -57,18 +59,7 @@ export default function MyGoogleLogin() {
     }
     return (
         <div>
-            {/* {
-                logindata ? (
-                    <div>
-                        <h4>You Logged in as </h4>
-                        <button onClick={() => { handleLogout() }}>Logout</button>
-                    </div>
 
-                )
-                    :
-                    null
-
-            } */}
             <GoogleLogin
                 clientId={googleClientId}
                 buttonText="Login With Google"

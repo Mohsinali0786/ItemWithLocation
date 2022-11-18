@@ -6,9 +6,9 @@ import {getAllItems} from '../Redux/actions'
 
 
 
-const getallData=(dispatch)=>{
+const getallData=(dispatch,userid)=>{
     console.log('function')
-    axios.get(`${GET?.GETITEMS}`).then((res)=>{
+    axios.get(`${GET?.GETITEMS}/${userid}`).then((res)=>{
         console.log('getAllDATA',res.data)
         dispatch(getAllItems(res.data.data))
 
