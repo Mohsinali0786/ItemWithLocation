@@ -73,7 +73,7 @@ export default function ItemModal() {
     };
     return (
         <div >
-            <Button type="primary" onClick={showModal}>
+            <Button className="modal_btn" type="primary" onClick={showModal}>
                 Open Modal
             </Button>
 
