@@ -57,7 +57,7 @@ export default function MyGoogleLogin() {
     }
     return (
         <div>
-            {
+            {/* {
                 logindata ? (
                     <div>
                         <h4>You Logged in as </h4>
@@ -68,7 +68,7 @@ export default function MyGoogleLogin() {
                     :
                     null
 
-            }
+            } */}
             <GoogleLogin
                 clientId={googleClientId}
                 buttonText="Login With Google"

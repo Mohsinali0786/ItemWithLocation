@@ -8,6 +8,7 @@ import axios from "axios";
 // import { isLoggedin } from '../../Redux/actions/index'
 import {getallData} from '../../utils/helpers'
 import { useDispatch } from "react-redux";
+import AddIcon from '@mui/icons-material/Add';
 
 export default function ItemModal() {
     const dispatch=useDispatch()
@@ -73,9 +74,10 @@ export default function ItemModal() {
     };
     return (
         <div >
-            <Button className="modal_btn" type="primary" onClick={showModal}>
+            {/* <Button className="modal_btn" type="primary" onClick={showModal}>
                 Open Modal
-            </Button>
+            </Button> */}
+            <AddIcon className="modal_btn" onClick={showModal}/>
 
             <Modal title="Add Your Item" okText={"Add Item"} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <div className='img_div'>

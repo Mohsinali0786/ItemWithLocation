@@ -17,6 +17,12 @@ const getallData=(dispatch)=>{
         console.log('Err',err)
     })
 }
+const LogoutMessage=(Swal)=>{
+    Swal.fire({
+        icon:'success',
+        text:'Logout Successfully'
+    })
+}
 
 // const requiredMessage = (value) => `Please input your ${value}!`
 
@@ -58,6 +64,7 @@ const getallData=(dispatch)=>{
 
 export {
     getallData,
+    LogoutMessage
     // requiredMessage,
     // inputPlace,
     // setActiveMenu,

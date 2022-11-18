@@ -4,8 +4,8 @@ import useGeolocation from "react-hook-geolocation";
 import { get_lat_long } from '../../Redux/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
 const containerStyle = {
-    width: '95vw',
-    height: '75vh'
+    width: '95vmax',
+    height: '70vh'
 };
 
 function MyComponent() {

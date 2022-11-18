@@ -140,6 +140,7 @@ html {
     float: right !important;
     margin-right: 3% !important;
     margin-top: -50px !important;
+    font-size: 70px !important;
 }
 /* .ant-upload.ant-upload-select:hover {
     border: 1px dashed aqua !important;
@@ -214,13 +215,28 @@ html {
     margin-left: 2%;
 }
 .googleloginbtn{
-    width: 20% !important;
+    width: 250px !important;
     background-color: black !important;
     color: white !important;
     border-radius: 10px !important;
     padding: 10px !important;
     font-size:large !important;
     margin-top: 3%;
+}
+.header{
+    text-align: right;
+    margin-right: 5%;
+    margin-top: 2%;
+}
+.header div{
+    display: flex;
+    justify-content: right;
+}
+.header div  p{
+    padding-right: 2%;
+}
+.header svg{
+    font-size: x-large;
 }
 @media(max-width: 1200px) {
     .card {
