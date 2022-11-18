@@ -16,7 +16,7 @@ export default function ItemModal() {
     };
     return (
         <div >
-            <Button type="primary" onClick={showModal}>
+            <Button className="modal_btn" type="primary" onClick={showModal}>
                 Open Modal
             </Button>
             <Modal title="Add Your Item" okText={"Add Item"} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>

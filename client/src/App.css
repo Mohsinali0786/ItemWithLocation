@@ -97,30 +97,34 @@ html {
     margin-left: 10%;
 }
 
-/* .inp {
-    height: 5vh;
-    width: 80%;
-    margin-top: 5%;
-} */
 .text_area {
-    margin-top: 4%;
     width: 100%;
-    background-color: transparent;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid rgb(228, 220, 220);
+    border-radius: 2px;
 }
 
 .text_area:hover {
-    border: 1px solid aqua;
+    border: 1px solid #1890ff;
 }
-
-.ant-modal-body {
+.ant-btn {
+    width: 100% !important;
+}
+.ant-modal-footer{
+    padding: 10px 24px 25px 24px !important;
+}
+.ant-modal-footer .ant-btn+.ant-btn:not(.ant-dropdown-trigger){
+    margin-left: 0px !important;
+    margin-top: 3% !important;
+}
+.ant-modal-footer{
+    border-top: none !important;
+}
+/* .ant-modal-body {
     padding: 24px 24px 12px 24px !important;
-}
+} */
 
 .text_area:focus {
-    border: 1px solid aqua;
-    box-shadow: aqua 0px 0px 2px;
+    /* box-shadow: #1890ff 0px 0px 2px; */
     outline: none;
 }
 
@@ -128,14 +132,21 @@ html {
     height: 5vh;
     width: 25%;
 }
-
-.ant-upload.ant-upload-select:hover {
+.ant-modal-close-x {
+    padding-right: 12px !important;
+}
+.modal_btn{
+    width: 19% !important;
+    float: right !important;
+    margin-right: 3% !important;
+    margin-top: -50px !important;
+}
+/* .ant-upload.ant-upload-select:hover {
     border: 1px dashed aqua !important;
 }
 
 .ant-modal-content {
     background-color: none !important;
-    /* background: linear-gradient(to top, black, gray); */
     background-image: url("https://img.freepik.com/free-photo/plain-dark-black-wall-product-background_53876-129678.jpg") !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
@@ -186,15 +197,13 @@ html {
 .ant-modal-header {
     border-bottom: none !important;
     background-color: transparent !important;
-    /* color: none !important; */
 }
 
 .ant-modal-footer {
     border-top: none !important;
-    /* padding: 24px 21px !important; */
     padding-bottom: 24px !important;
     padding-right: 22px !important;
-}
+} */
 .mymapcss{
     width: 100% !important;
 }
