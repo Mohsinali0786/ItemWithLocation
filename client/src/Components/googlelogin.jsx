@@ -4,9 +4,13 @@ import { googleClientId } from '../utils/constants'
 import { AUTH } from '../utils/apis'
 import axios from 'axios';
 import Swal from 'sweetalert2'
-
+import { isLoggedin } from '../Redux/actions';
+import { useDispatch } from 'react-redux';
+import {loginUserData} from '../Redux/actions'
+import {getallData} from '../utils/helpers'
 export default function MyGoogleLogin() {
     const [logindata, setLogindata] = useState(false)
+    const dispatch=useDispatch()
     const responseGoogle = (response) => {
         console.log('failure', response);
     }
@@ -18,18 +22,30 @@ export default function MyGoogleLogin() {
             email: response.profileObj.email
         }
         axios.post(AUTH?.REGISTER, userdata)
-            .then((res) => {
+        .then((res) => {
+                console.log(res.data,'mydata')
                 if (res.data.success === true) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Congratulation...',
                         text: res.data.message,
                     })
+                  dispatch(isLoggedin(true))
+                  dispatch(loginUserData(res.data.logininfo))
+                  
                 }
                 else {
-
-                  console.log(res.data.logininfo)
+                    console.log(res.data.logininfo)
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Congratulation...',
+                        text: 'You successfully loggedin',
+                    })
+                    dispatch(isLoggedin(true))
+                    dispatch(loginUserData(res.data.logininfo))
+                    getallData(dispatch)
                 }
+                // getallData(dispatch)
             })
             .catch((err) => {
                 console.log('err===>', err)

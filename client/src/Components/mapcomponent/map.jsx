@@ -30,7 +30,7 @@ function MyComponent() {
                 lat: Number(geolocation.latitude),
                 lng: Number(geolocation.longitude)
             })
-            dispatch(get_lat_long(state.itemReducer.latandlong))
+            dispatch(get_lat_long(center))
             // get_lat_long(center)
 
         }
@@ -39,7 +39,9 @@ function MyComponent() {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyDWfTmN5NTS47hRPH-nAMmCzxsvD6tManY "
+
+        /*AIzaSyDWfTmN5NTS47hRPH-nAMmCzxsvD6tManY*/
+        googleMapsApiKey: "AIzaSyACoVaIxAsAXXY-V6X1lco9ciituLSuhO8"
     })
 
     const [map, setMap] = React.useState(null)

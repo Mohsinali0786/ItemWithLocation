@@ -1,11 +1,12 @@
 // import { UploadOutlined } from '@ant-design/icons';
 // import { Button, message, Upload } from 'antd';
-import { Button } from '@mui/material';
+import { Button } from 'antd';
 import axios from "axios"
 import { useDispatch, useSelector } from 'react-redux';
 import { get_Img_url } from '../../Redux/actions'
 import { useState } from "react"
 import { POST } from '../../utils/apis'
+import Swal from 'sweetalert2';
 
 function UploadImageComponent() {
     console.log('mysatte', useSelector((state) => state))
@@ -25,12 +26,20 @@ function UploadImageComponent() {
         axios.post(`${POST?.UPLOADIMAGE}`, formdata)
             .then((res) => {
                 if (res.data.success === true) {
-                    alert('succesfully uploaded')
-                    console.log("res.result", res.data.result);
+                    // alert('succesfully uploaded')
+                    // console.log("res.result", res.data.result);
                     dispatch(get_Img_url(res.data.result))
+                    Swal.fire({
+                        icon:'success',
+                        text:res.data.message
+                    })
                 }
             })
             .catch((err) => {
+                Swal.fire({
+                    icon:'error',
+                    text:res.data.message
+                })
                 console.log('err===>', err)
             })
 

@@ -3,15 +3,17 @@ const cloudinary = require('cloudinary')
 const addItem = async (req, res) => {
 
     try {
-        const { image, description, latitude, longitude } = req.body
-        if(image||description){
+        const { image, description, latitude, longitude ,userid} = req.body
+        console.log('===>',req.body)
+        if(!image||!description){
             return res.send({ success: false, message: 'Please fill all fields' })
         }
         await Item.create({
             image,
             description,
             latitude,
-            longitude
+            longitude,
+            userId:userid,
         }).then(() => {
             return res.send({ success: true, message: 'Congratulations Item added successfully' })
         }).catch((err) => {
@@ -33,7 +35,8 @@ const uploadImage = async (req, res) => {
         });
         res.send({
             success: true,
-            result: result.url
+            result: result.url,
+            message:'Image uploaded seccessfully'
         })
         console.log(result.url, "result");
         return result.public_id;
