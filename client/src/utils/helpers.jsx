@@ -5,9 +5,6 @@ import { GET } from './apis'
 import { getAllItems } from '../Redux/actions'
 import moment from 'moment'
 
-
-
-
 const getallData = (dispatch, userid) => {
     console.log('function')
     axios.get(`${GET?.GETITEMS}/${userid}`)
