@@ -3,6 +3,7 @@ import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-map
 import useGeolocation from "react-hook-geolocation";
 import { get_lat_long } from '../../Redux/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
+
 const containerStyle = {
     width: '95vmax',
     height: '70vh'
@@ -11,7 +12,7 @@ const containerStyle = {
 function MyComponent() {
     const dispatch = useDispatch()
     const [activeMarker, setActiveMarker] = useState(null);
-
+    const userid = useSelector((state) => state.itemReducer.LOGINUSER?._id)
     const state = useSelector((state) => state)
     console.log('state', state.itemReducer?.allItems)
     const allItems = state.itemReducer?.allItems
@@ -39,8 +40,6 @@ function MyComponent() {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-
-        /*AIzaSyDWfTmN5NTS47hRPH-nAMmCzxsvD6tManY*/
         googleMapsApiKey: "AIzaSyACoVaIxAsAXXY-V6X1lco9ciituLSuhO8"
     })
 
@@ -57,6 +56,7 @@ function MyComponent() {
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null)
     }, [])
+
     const handleActiveMarker = (marker) => {
         console.log('marker', marker)
         let filterData = allItems.filter((val) => val?._id == marker)
@@ -77,22 +77,19 @@ function MyComponent() {
                 <></>
                 {
                     allItems?.map((v) => {
-                        console.log('************', { lat: v.latitude, lng: v.longitude })
                         return (
                             <>
                                 {
                                     allItems?.map((v, i) => {
-                                        console.log('v', v._id)
-                                        console.log('activeMarker', activeMarker)
 
                                         return (
                                             <Marker onClick={() => handleActiveMarker(v?._id)} position={{ lat: v.latitude, lng: v.longitude }} >
-                                                
-                                                {activeMarker === v?._id /*<== add id here */ ? (
+
+                                                {activeMarker === v?._id ? (
                                                     <InfoWindow onCloseClick={() => setActiveMarker(null)}>
                                                         <div>
-                                                            <img style={{ width: '50px' }} src={v?.image} />
-                                                            <p>{v?.description}</p>
+                                                            <img className='infowindow-image'  src={v?.image} />
+                                                            <p><b>Description</b>{v?.description}</p>
                                                         </div>
                                                     </InfoWindow>
                                                 ) : null}

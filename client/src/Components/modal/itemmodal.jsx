@@ -1,131 +1,114 @@
-import { useState } from "react";
-import { Button, Modal } from 'antd';
-import { Alert } from "@mui/material";
+import { useState } from 'react'
+import { Button, Modal } from 'antd'
+import { Alert } from '@mui/material'
 import UploadImage from '../uploadimage/uploadimg'
 import { POST } from '../../utils/apis'
-import { useSelector } from "react-redux";
-import Swal from "sweetalert2";
-import axios from "axios";
-// import { isLoggedin } from '../../Redux/actions/index'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
 import { getallData } from '../../utils/helpers'
-import { useDispatch } from "react-redux";
-import AddIcon from '@mui/icons-material/Add';
+import { useDispatch } from 'react-redux'
+import AddIcon from '@mui/icons-material/Add'
 import { loginfirstalert } from '../../Redux/actions'
-import { Input, Form, message } from "antd";
+import { Input, Form } from 'antd'
 import { successMessage, errorMessage } from '../../utils/helpers'
+import { message, Upload } from 'antd'
+import { UploadOutlined, FileOutlined } from '@ant-design/icons'
 
-
-const { TextArea } = Input;
+const { TextArea } = Input
 
 export default function ItemModal() {
     const dispatch = useDispatch()
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [description, setDescription] = useState('')
     const getdata = useSelector((state) => state?.itemReducer)
     const ISLOGGEDIN = useSelector((state) => state.itemReducer.ISLOGGEDIN)
     const userid = useSelector((state) => state.itemReducer.LOGINUSER?._id)
-    const [formdata, setformData] = useState()
-    const [form] = Form.useForm();
+    const [form] = Form.useForm()
     const [loading, setLoading] = useState(false)
+    const [fileList, setFileList] = useState([])
 
-
-    function LoginFirstMesage() {
-        // Swal.fire({
-        //     icon: 'error',
-        //     text: 'Please Login First'
-        // })
-        // <Alert severity="error">This is an error alert — check it out!</Alert>
-        // console.log('LoginFirstMesage')
-    }
     const showModal = () => {
         if (ISLOGGEDIN) {
-            setIsModalOpen(true);
+            setIsModalOpen(true)
         }
         else {
             errorMessage('Please Login First')
             // LoginFirstMesage()
         }
-    };
-    const validateForm = () => {
-        form
-            .validateFields()
-            .then(values => {
-                form.resetFields();
-                handleOk()
-            })
-            .catch(info => {
-                console.log('Validate Failed:', info);
-            });
     }
-    const handleOk = () => {
-        setLoading(true)
-        console.log('formdata', formdata)
-        axios.post(`${POST?.UPLOADIMAGE}`, formdata)
-            .then((res) => {
-                let itemDetail = {
-                    image: res.data.result,
-                    description,
-                    latitude: getdata?.latandlong?.latitude,
-                    longitude: getdata?.latandlong?.longitude,
-                    userid,
-                }
-                axios.post(`${POST?.ADDITEMS}`, itemDetail)
-                    .then((res) => {
-                        console.log('res=>', res.data)
-                        if (res.data.success === true) {
-                            successMessage(res.data.message)
-                            setLoading(false)
 
-                            // Swal.fire({
-                            //     icon: 'success',
-                            //     text: res.data.message
-                            // })
-                            setIsModalOpen(false);
-                            getallData(dispatch, userid)
-                        }
-                    })
-                    .catch((err) => {
-                        setLoading(false)
-                        console.log('err===>', err)
-                    })
+
+    const handleCancel = () => {
+        setIsModalOpen(false)
+    }
+
+    const onFinish = (values) => {
+        console.log('Success:', values)
+        setLoading(true)
+        const formValues = new FormData()
+        if (values?.file?.file) {
+            formValues.append('file', values?.file?.file)
+        }
+        formValues.append('userid', userid)
+        formValues.append('description', values?.description)
+        formValues.append('latitude', Number(getdata?.latandlong?.latitude))
+        formValues.append('longitude', Number(getdata?.latandlong?.longitude))
+
+        axios.post(POST?.ADDITEMS, formValues)
+            .then((res) => {
+                const { data } = res
+                if (data.success) {
+                    successMessage(data.message)
+                    setLoading(false)
+                    setIsModalOpen(false)
+                    getallData(dispatch, userid)
+                } else {
+                    setLoading(false)
+                    errorMessage(data.message)
+                }
             })
             .catch((err) => {
+                setLoading(false)
                 console.log('err===>', err)
             })
-
-        // console.log("description", description)
-    };
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
+    }
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
+        setLoading(false)
+        errorMessage(errorInfo)
+    }
+
+    const normFile = (e) => {
+        setFileList([])
+
+        if (e?.fileList?.length && e?.file?.type !== 'image/png' && e?.file?.type !== 'image/jpeg') {
+            errorMessage('You can only upload Images!')
+            return []
+        }
+
+        if (Array.isArray(e)) {
+            return e
+        }
+
+        e?.fileList?.length ? setFileList([...[e?.file]]) : setFileList([])
+        return e && [e.file]
+    }
 
     return (
-        <div >
-            {/* <Button className="modal_btn" type="primary" onClick={showModal}>
-                Open Modal
-            </Button> */}
-
-            <AddIcon className="modal_btn" onClick={showModal} />
+        <div className='AddItemMainDiv'>
+            <AddIcon className='modal_btn' onClick={showModal} />
 
             <Modal
-                title="Add Your Item"
-                okText={"Add Item"}
+                footer={null}
+                title='Add Your Item'
+                okText={'Add Item'}
                 open={isModalOpen}
-                onOk={validateForm}
+                // onOk={validateForm}
                 onCancel={handleCancel}
             >
-
-
                 <div className='modal_div' id='modal-modal-description'>
 
                     <Form
-                        name="basic"
+                        name='basic'
                         labelCol={{
                             span: 8,
                         }}
@@ -141,22 +124,29 @@ export default function ItemModal() {
 
                     >
                         <Form.Item
-                            label="Image"
-                            name="image"
+                            name='file'
+                            label='File'
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please select image first!',
+                                    message: 'Please Select Your file!',
                                 },
                             ]}
                         >
-                            <div className='img_div'>
-                                <UploadImage formdata={formdata} setformdata={setformData} />
-                            </div>
+                            <Upload
+                                name='file'
+                                multiple={false}
+                                beforeUpload={() => false}
+                                accept='image/png, image/jpeg'
+                                onChange={normFile}
+                                fileList={fileList}
+                            >
+                                <Button icon={<UploadOutlined />}>Click to upload</Button>
+                            </Upload>
                         </Form.Item>
                         <Form.Item
-                            label="Description"
-                            name="description"
+                            label='Description'
+                            name='description'
                             rules={[
                                 {
                                     required: true,
@@ -164,8 +154,9 @@ export default function ItemModal() {
                                 },
                             ]}
                         >
-                            <TextArea onChange={(e) => setDescription(e.target.value)} />
+                            <TextArea />
                         </Form.Item>
+                        <Button loading={loading} htmlType='submit' type='primary'  >Add Item</Button>
                     </Form>
                 </div>
             </Modal>

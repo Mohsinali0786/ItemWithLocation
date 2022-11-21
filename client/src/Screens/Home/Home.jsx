@@ -7,20 +7,22 @@ import { useEffect } from 'react';
 import { isLoggedin } from '../../Redux/actions';
 import Header from '../../Components/header/header'
 // import Notification from '../../Components/notification/notification';
-
+import { getallData } from '../../utils/helpers';
 
 const Home = () => {
     const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(isLoggedin(false))
-    }, [])
-   
+    const userid = useSelector((state) => state.itemReducer.LOGINUSER?._id)
+
+    // useEffect(() => {
+    //     dispatch(isLoggedin(false))
+    // }, [])
+    useEffect(()=>{
+        getallData(dispatch,userid)
+    },[])
     return (
         <div className="mainHomeDiv">
-            <Header/>
-            {/* <Notification/> */}
+            <Header />
             <Map />
-            {/* <MyGoogleLogin /> */}
             <ItemModal />
 
         </div>

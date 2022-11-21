@@ -265,6 +265,13 @@ html {
 .ant-form-item-label{
     text-align: left !important;
 }
+.infowindow-image{
+    width: 100px;
+    margin-bottom: 5%;
+}
+.AddItemMainDiv{
+    margin-top: 8%;
+}
 @media(max-width: 1200px) {
     .card {
         width: 45%;
@@ -313,6 +320,10 @@ html {
 
     .heading {
         font-size: 20px;
+    }
+    .AddItemMainDiv{
+        margin-top: 20%;
+
     }
 }
 

@@ -18,7 +18,6 @@ const getallData=(dispatch,userid)=>{
     })
 }
 
-
 const successMessage = (desc = 'Successfully Complete!') => {
     return message.success(desc)
 }
