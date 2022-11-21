@@ -20,13 +20,7 @@ const getallData = (dispatch, userid) => {
                 return !val.isTaken || (val.isTaken && duration._data.hours === 0 )
             })
 
-            console.log('filteredData',filterData)
-            // var days = duration.asHours();
-            // var end = moment("2022-11-22").utc() // another date
-            // console.log('hours', duration)
-
             dispatch(getAllItems(data.data))
-
         })
         .catch((err) => {
             console.log('Err', err)
