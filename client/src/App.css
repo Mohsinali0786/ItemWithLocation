@@ -238,14 +238,14 @@ html {
     padding-left: 10px;
 }
 .googleloginbtn{
-    /* width: 100px !important; */
     background-color: black !important;
     color: white !important;
     border-radius: 10px !important;
-    padding: 5px !important;
-    font-size:medium !important;
     margin-bottom: 2%;
-    /* margin-top: 3%; */
+}
+.googleloginbtn div {
+    padding: 3px !important;
+    margin-left: 3px;
 }
 .header{
     text-align: right;
@@ -261,6 +261,9 @@ html {
 }
 .header svg{
     font-size: x-large;
+}
+.ant-form-item-label{
+    text-align: left !important;
 }
 @media(max-width: 1200px) {
     .card {

@@ -16,7 +16,6 @@ function MyComponent() {
     console.log('state', state.itemReducer?.allItems)
     const allItems = state.itemReducer?.allItems
     const geolocation = useGeolocation();
-    console.log('geolocation.longitude', geolocation.longitude, geolocation.latitude)
     const [center, setCenter] = useState({
         lat: Number(geolocation.latitude),
         lng: Number(geolocation.longitude)
@@ -59,10 +58,10 @@ function MyComponent() {
         setMap(null)
     }, [])
     const handleActiveMarker = (marker) => {
-        if (marker === activeMarker) {
-            return;
-        }
-        setActiveMarker(marker);
+        console.log('marker', marker)
+        let filterData = allItems.filter((val) => val?._id == marker)
+        console.log('filterData', filterData[0]._id)
+        setActiveMarker(filterData[0]._id);
     };
 
     return isLoaded ? (
@@ -77,21 +76,36 @@ function MyComponent() {
             >
                 <></>
                 {
-                    // allItems.map((v)=>{
-                    //     return()
-                    // })
-                    <Marker onClick={() => handleActiveMarker(0)} position={{ lat: Number(geolocation.latitude), lng: Number(geolocation.longitude) }} >
-                        {activeMarker === 0 /*<== add id here */ ? (
-                            <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                                <div>Hello</div>
-                            </InfoWindow>
-                        ) : null}
+                    allItems?.map((v) => {
+                        console.log('************', { lat: v.latitude, lng: v.longitude })
+                        return (
+                            <>
+                                {
+                                    allItems?.map((v, i) => {
+                                        console.log('v', v._id)
+                                        console.log('activeMarker', activeMarker)
 
+                                        return (
+                                            <Marker onClick={() => handleActiveMarker(v?._id)} position={{ lat: v.latitude, lng: v.longitude }} >
+                                                
+                                                {activeMarker === v?._id /*<== add id here */ ? (
+                                                    <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                                                        <div>
+                                                            <img style={{ width: '50px' }} src={v?.image} />
+                                                            <p>{v?.description}</p>
+                                                        </div>
+                                                    </InfoWindow>
+                                                ) : null}
+                                            </Marker>
 
-                    </Marker>
+                                        )
+                                    })
+                                }
+                            </>
+                        )
+                    })
 
                 }
-                {/* <Marker position={{ lng: 67.0583857 ,lat:24.887913  }} /> */}
             </GoogleMap>
 
         </div>

@@ -7,6 +7,7 @@
 // import { useState } from "react"
 // import { POST } from '../../utils/apis'
 // import Swal from 'sweetalert2';
+import { Alert } from "antd"
 
 function UploadImageComponent({formdata,setformdata}) {
     // console.log('mysatte', useSelector((state) => state))
@@ -25,10 +26,9 @@ function UploadImageComponent({formdata,setformdata}) {
     }
     return (
         <div className='uploadImage-mainDiv'>
-            <p className='labels'>Image</p>
+            {/* <p className='labels'>Image</p> */}
             <input type='file'
                 onChange={(e) => { upload_img(e) }}
-
             />
         </div >
     )

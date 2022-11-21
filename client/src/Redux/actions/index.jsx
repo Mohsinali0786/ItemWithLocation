@@ -1,4 +1,4 @@
-import {UPLOADTEAMIMAGE,LATANDLONG,ISLOGGEDIN,LOGINUSER,GETALLITEMS} from '../types'
+import {UPLOADTEAMIMAGE,LATANDLONG,ISLOGGEDIN,LOGINUSER,GETALLITEMS,LOGINFIRSTALERT} from '../types'
 
 export const get_Img_url=(imgURL)=>async(dispatch)=>{
     console.log('Img URL',imgURL)
@@ -36,3 +36,11 @@ export const getAllItems=(data)=>async(dispatch)=>{
         payload:data
     })
 }
+export const loginfirstalert=(data)=>async(dispatch)=>{
+    // console.log('latandlong',latandlong)
+    dispatch({
+        type:LOGINFIRSTALERT,
+        payload:data
+    })
+}
+

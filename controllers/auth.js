@@ -6,7 +6,7 @@ const registerUser = async (req, res) => {
         console.log(req.body)
         const UserExist = await UserModal.findOne({ email,google_id})
         if(UserExist ){
-            return res.send({ success: false, logininfo: UserExist })
+            return res.send({ success: true, logininfo: UserExist,message: 'Congratulations Login Successfully' })
         }
         await UserModal.create({
             name,

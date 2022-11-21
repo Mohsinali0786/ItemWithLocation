@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { isLoggedin } from '../../Redux/actions';
 import Header from '../../Components/header/header'
+// import Notification from '../../Components/notification/notification';
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
     return (
         <div className="mainHomeDiv">
             <Header/>
+            {/* <Notification/> */}
             <Map />
             {/* <MyGoogleLogin /> */}
             <ItemModal />

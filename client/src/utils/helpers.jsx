@@ -17,13 +17,14 @@ const getallData=(dispatch,userid)=>{
         console.log('Err',err)
     })
 }
-const LogoutMessage=(Swal)=>{
-    Swal.fire({
-        icon:'success',
-        text:'Logout Successfully'
-    })
-}
 
+
+const successMessage = (desc = 'Successfully Complete!') => {
+    return message.success(desc)
+}
+const errorMessage = (desc = 'Error found!') => {
+    return message.error(desc)
+}
 // const requiredMessage = (value) => `Please input your ${value}!`
 
 // const inputPlace = (value) => `Input your ${value} Here...!`
@@ -64,7 +65,8 @@ const LogoutMessage=(Swal)=>{
 
 export {
     getallData,
-    LogoutMessage
+    successMessage,
+    errorMessage,
     // requiredMessage,
     // inputPlace,
     // setActiveMenu,
