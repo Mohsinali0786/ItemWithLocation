@@ -1,5 +1,6 @@
 const { Item } = require('../model')
 const cloudinary = require('cloudinary')
+const moment=require('moment')
 
 const addItem = async (req, res) => {
     try {
@@ -11,7 +12,7 @@ const addItem = async (req, res) => {
         }
         await cloudinary.uploader.upload(req.files.file.tempFilePath, function (result, err) {
             if (!result || err) {
-                console.log('err',  result, err)
+                console.log('err', result, err)
                 return res.send({ success: false, message: 'Image Upload Error', err })
             }
 
@@ -21,6 +22,7 @@ const addItem = async (req, res) => {
                 latitude,
                 longitude,
                 userId: userid,
+
             }
             let saveData = new Item(obj)
             saveData.save()
@@ -38,6 +40,30 @@ const addItem = async (req, res) => {
     }
 }
 
+const updateItem = (req, res) => {
+    try {
+        const { body } = req
+        const { _id } = body
+        console.log(_id,'updated running')
+
+        if (!_id) {
+            return res.send({ success: false, message: 'Please fill all fields' })
+        }
+
+        Item.findByIdAndUpdate(_id, { isTaken: true, updatedAt: moment() }, async (err, data) => {
+            if (err) {
+                console.log('err', err)
+                return res.send({ success: false, message: 'Image Upload Error', err })
+            }
+            return res.send({ success: true })
+        })
+    } catch (e) {
+        console.log('err', e)
+        return res.send({ success: false, message: 'Oops Something Went Wrong!' })
+    }
+}
+
 module.exports = {
-    addItem
+    addItem,
+    updateItem
 }

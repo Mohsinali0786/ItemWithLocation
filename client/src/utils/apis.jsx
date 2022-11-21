@@ -13,7 +13,9 @@ const GET = {
 
 const POST = {
     ADDITEMS:`${postApi}/additems`,
-    UPLOADIMAGE:`${postApi}/uploadimage`
+    UPLOADIMAGE:`${postApi}/uploadimage`,
+    UPDATEITEM:`${postApi}/update-item`
+
 
 }
 

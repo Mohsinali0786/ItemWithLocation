@@ -5,6 +5,7 @@ const getItems = async (req, res) => {
             if (err || !data) {
                 return res.send({ success: false, message: 'No user found!' })
             }
+
             console.log('===>', data)
             return res.send({ success: true, data })
         }).populate('userId')

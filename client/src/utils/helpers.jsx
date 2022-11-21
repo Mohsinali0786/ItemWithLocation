@@ -1,21 +1,39 @@
 import { message, notification } from 'antd'
 import axios from 'axios'
 import allPaths from '../Config/paths'
-import {GET} from './apis'
-import {getAllItems} from '../Redux/actions'
+import { GET } from './apis'
+import { getAllItems } from '../Redux/actions'
+import moment from 'moment'
 
 
 
-const getallData=(dispatch,userid)=>{
+
+const getallData = (dispatch, userid) => {
     console.log('function')
-    axios.get(`${GET?.GETITEMS}/${userid}`).then((res)=>{
-        console.log('getAllDATA',res.data)
-        dispatch(getAllItems(res.data.data))
+    axios.get(`${GET?.GETITEMS}/${userid}`)
+        .then((res) => {
+            const { data } = res
+            let filterData = data.data.filter((val, i) => {
+                var now = moment().utc() //todays date
+                console.log('now',now)
+                var end = moment(val.updatedAt).utc()//todays date
+                console.log('end',end)
+                var duration = moment.duration(now.diff(end))
+                console.log('duration',duration._data.hours)
+                return !val.isTaken || (val.isTaken && duration._data.hours === 0 )
+            })
 
-    })
-    .catch((err)=>{
-        console.log('Err',err)
-    })
+            console.log('filteredData',filterData)
+            // var days = duration.asHours();
+            // var end = moment("2022-11-22").utc() // another date
+            // console.log('hours', duration)
+
+            dispatch(getAllItems(data.data))
+
+        })
+        .catch((err) => {
+            console.log('Err', err)
+        })
 }
 
 const successMessage = (desc = 'Successfully Complete!') => {

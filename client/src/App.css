@@ -266,12 +266,23 @@ html {
     text-align: left !important;
 }
 .infowindow-image{
-    width: 100px;
+    width: 150px;
     margin-bottom: 5%;
+}
+.infowindow-heading{
+    font-size: large;
+    font-weight: larger;
+    text-align: center;
 }
 .AddItemMainDiv{
     margin-top: 8%;
 }
+.infowindow-text{
+    font-size: medium;
+}
+/* .infowindow-div{
+    text-align: center;
+} */
 @media(max-width: 1200px) {
     .card {
         width: 45%;
