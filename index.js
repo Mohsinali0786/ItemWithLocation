@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -11,18 +12,15 @@ const { executeJob } = require('./helpers')
 const moment = require('moment')
 const schedule = require('node-schedule')
 
-// const { mongoose } = require('./config')
 
-require('dotenv').config()
 const PORT = process.env.PORT || 4000
 
-
 mongoose.connect(process.env.DB_URI)
-  .then(() => {
-    console.log('Database Connected')
-  }).catch((err) => {
-    console.log('Err===>', err)
-  })
+.then(() => {
+  console.log('Database Connected')
+}).catch((err) => {
+  console.log('Err===>', err)
+})
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -30,24 +28,21 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
+app.use(express.json())
 app.use(bodyParser.json())
+app.use(cors());
 app.use(fileupload({ useTempFiles: true }))
 
-let now = moment().add(1, 'days').startOf('day').format("YYYY-MM-DD HH:mm:ss")
-console.log('now', now)
-var then = "22-11-2022 22:34:30";
-
-let cond = moment.utc(moment(now, "YYYY-MM-DD HH:mm:ss").diff(moment(then, "YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss")
-console.log('cond', cond)
-// app.use(bodyParser.urlencoded({limit: '100mb' ,extended: true }))
-
-
-
+app.use(express.urlencoded({ limit: '10000mb', extended: true }))
 app.use(express.static(path.join(__dirname, '.-client/build')))
 
-app.use(cors());
 
 app.use('/api', require('./routes'))
+app.get('/api/get/test', (req, res) => { return res.send({ success: true, message: 'BACKEND IS WORKING!' }) })
+//set a static folder
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html'))
+})
 
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({
@@ -57,7 +52,6 @@ app.use(bodyParser.urlencoded({
 }))
 schedule.scheduleJob('0 0 1 * *', () => executeJob())
 
-app.use(express.json())
 
 server.listen(PORT, () => {
   console.log(`Server up and running on ${PORT}`)
