@@ -11,16 +11,17 @@ const getallData = (dispatch, userid) => {
         .then((res) => {
             const { data } = res
             let filterData = data.data.filter((val, i) => {
+                console.log('val',val,i)
                 var now = moment().utc() //todays date
-                console.log('now',now)
+                console.log('now',now,i)
                 var end = moment(val.updatedAt).utc()//todays date
-                console.log('end',end)
+                console.log('end',end,i)
                 var duration = moment.duration(now.diff(end))
-                console.log('duration',duration._data.hours)
-                return !val.isTaken || (val.isTaken && duration._data.hours === 0 )
+                console.log('duration',duration._data.hours,i)
+                return !val.isTaken || (val.isTaken && duration._data.hours !== 0 )
             })
-
-            dispatch(getAllItems(data.data))
+            console.log('filterData',filterData)
+            dispatch(getAllItems(filterData))
         })
         .catch((err) => {
             console.log('Err', err)

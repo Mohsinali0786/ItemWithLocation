@@ -100,7 +100,7 @@ function MyComponent() {
                                                     <InfoWindow onCloseClick={() => setActiveMarker(null)}>
                                                         <div className='infowindow-div'>
                                                             <img className='infowindow-image'  src={v?.image} />
-                                                            <p><b className='infowindow-heading'>Description:</b></p>
+                                                            <p><b className='infowindow-heading'>Description</b></p>
                                                             <p className='infowindow-text'>{v?.description}</p>
                                                         </div>
                                                     </InfoWindow>
