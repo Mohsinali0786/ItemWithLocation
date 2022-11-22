@@ -28,17 +28,8 @@ cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
-  // secure: true
 });
-// var db = mongoose.connection
-// db.on('error', (err) => {
-//   console.log('err', err)
-// })
 
-// db.on('open', function () {
-//   console.log('DB running')
-// })
-// parse requests of content-type - application/json
 app.use(bodyParser.json())
 app.use(fileupload({ useTempFiles: true }))
 
@@ -48,8 +39,13 @@ var then = "22-11-2022 22:34:30";
 
 let cond = moment.utc(moment(now, "YYYY-MM-DD HH:mm:ss").diff(moment(then, "YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss")
 console.log('cond', cond)
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({limit: '10000mb', extended: true }))
 app.use(express.static(path.join(__dirname, '.-client/build')))
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html'))
+})
+
 app.use(cors());
 
 app.use('/api', require('./routes'))
