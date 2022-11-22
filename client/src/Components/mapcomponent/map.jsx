@@ -3,7 +3,9 @@ import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-map
 import useGeolocation from "react-hook-geolocation";
 import { get_lat_long } from '../../Redux/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
-import {POST} from '../../utils/apis'
+import { POST } from '../../utils/apis'
+import { Image } from 'antd';
+
 import axios from 'axios';
 const containerStyle = {
     width: '95vmax',
@@ -52,14 +54,14 @@ function MyComponent() {
     const handleActiveMarker = (marker) => {
         let filterData = allItems.filter((val) => val?._id == marker)
         setActiveMarker(filterData[0]._id);
-        let obj={
-            _id:filterData[0]._id
-            
+        let obj = {
+            _id: filterData[0]._id
+
         }
-        axios.post(POST?.UPDATEITEM,obj).then((res)=>{
+        axios.post(POST?.UPDATEITEM, obj).then((res) => {
             console.log('Updated')
-        }).catch((err)=>{
-            console.log('err',err)
+        }).catch((err) => {
+            console.log('err', err)
         })
     };
 
@@ -87,7 +89,9 @@ function MyComponent() {
                                                 {activeMarker === v?._id ? (
                                                     <InfoWindow onCloseClick={() => setActiveMarker(null)}>
                                                         <div className='infowindow-div'>
-                                                            <img className='infowindow-image'  src={v?.image} />
+                                                            <Image
+                                                                width={100}
+                                                                src={v?.image} />
                                                             <p><b className='infowindow-heading'>Description</b></p>
                                                             <p className='infowindow-text'>{v?.description}</p>
                                                         </div>
