@@ -14,7 +14,7 @@ const schedule = require('node-schedule')
 // const { mongoose } = require('./config')
 
 require('dotenv').config()
-const PORT = process.env.PORT || 4001
+const PORT = process.env.myport || 4001
 
 
 mongoose.connect(process.env.DB_URI)
