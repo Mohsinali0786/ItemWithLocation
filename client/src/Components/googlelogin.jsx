@@ -13,7 +13,8 @@ export default function MyGoogleLogin() {
     const dispatch = useDispatch()
     const userid = useSelector((state) => state.itemReducer.LOGINUSER?._id)
     const responseGoogle = (response) => {
-        errorMessage('Some thing went wrong')
+        // errorMessage('Some thing went wrong')
+        console.log('E', response)
     }
     const handleLogin = (response) => {
         let userdata = {

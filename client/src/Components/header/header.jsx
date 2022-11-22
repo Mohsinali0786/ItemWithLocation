@@ -8,7 +8,6 @@ import {successMessage} from '../../utils/helpers'
 function Header() {
     const ISLOGGEDIN = useSelector((state) => state.itemReducer?.ISLOGGEDIN)
     const logginEmail = useSelector((state) => state.itemReducer?.LOGINUSER?.email)
-    console.log(logginEmail,'LogininEmail')
 
     const dispatch = useDispatch()
     const logout = () => {

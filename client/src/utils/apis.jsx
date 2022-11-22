@@ -4,16 +4,16 @@ const authApi='api/auth'
 
 
 const AUTH = {
-    REGISTER:`${authApi}/register`
+    REGISTER:`https://item-with-map-location.herokuapp.com${authApi}/register`
 }
 const GET = {
-    GETITEMS:`${getApi}/getitems`
+    GETITEMS:`https://item-with-map-location.herokuapp.com${getApi}/getitems`
 }
 
 const POST = {
-    ADDITEMS:`${postApi}/additems`,
-    UPLOADIMAGE:`${postApi}/uploadimage`,
-    UPDATEITEM:`${postApi}/update-item`
+    ADDITEMS:`https://item-with-map-location.herokuapp.com${postApi}/additems`,
+    UPLOADIMAGE:`https://item-with-map-location.herokuapp.com${postApi}/uploadimage`,
+    UPDATEITEM:`https://item-with-map-location.herokuapp.com${postApi}/update-item`
 
 
 }

@@ -12,7 +12,6 @@ const { executeJob } = require('./helpers')
 const moment = require('moment')
 const schedule = require('node-schedule')
 
-
 const PORT = process.env.PORT || 4000
 
 mongoose.connect(process.env.DB_URI)
