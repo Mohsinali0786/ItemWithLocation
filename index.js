@@ -43,7 +43,10 @@ console.log('cond', cond)
 
 
 
-app.use(express.static(path.join(__dirname, '.-client/build')))
+// app.use(express.static(path.join(__dirname, '.-client/build')))
+server.use('/static', express.static(path.join(__dirname, 'public')))
+server.use(express.static(path.join(__dirname, '../client/public')))
+server.use(express.static(path.join(__dirname, '../client')))
 
 app.use(cors());
 
