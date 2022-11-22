@@ -39,12 +39,8 @@ var then = "22-11-2022 22:34:30";
 
 let cond = moment.utc(moment(now, "YYYY-MM-DD HH:mm:ss").diff(moment(then, "YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss")
 console.log('cond', cond)
-app.use(bodyParser.urlencoded({limit: '10000mb', extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, '.-client/build')))
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'))
-})
 
 app.use(cors());
 
