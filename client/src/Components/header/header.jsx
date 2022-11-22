@@ -5,8 +5,6 @@ import Swal from 'sweetalert2'
 import { LogoutMessage } from '../../utils/helpers'
 import MyGoogleLogin from '../googlelogin'
 import {successMessage} from '../../utils/helpers'
-
-
 function Header() {
     const ISLOGGEDIN = useSelector((state) => state.itemReducer?.ISLOGGEDIN)
     const logginEmail = useSelector((state) => state.itemReducer?.LOGINUSER?.email)
@@ -16,7 +14,6 @@ function Header() {
     const logout = () => {
         dispatch(isLoggedin(false))
         successMessage('Logout Successfully')
-        
     }
     return (
         <div className="header">
@@ -29,7 +26,6 @@ function Header() {
                     :
                     <MyGoogleLogin/>
             }
-
         </div>
     )
 }

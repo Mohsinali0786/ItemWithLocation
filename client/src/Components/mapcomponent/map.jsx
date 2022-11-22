@@ -15,7 +15,6 @@ function MyComponent() {
     const [activeMarker, setActiveMarker] = useState(null);
     const userid = useSelector((state) => state.itemReducer.LOGINUSER?._id)
     const state = useSelector((state) => state)
-    console.log('state', state.itemReducer?.allItems)
     const allItems = state.itemReducer?.allItems
     const geolocation = useGeolocation();
     const [center, setCenter] = useState({
@@ -59,11 +58,8 @@ function MyComponent() {
     }, [])
 
     const handleActiveMarker = (marker) => {
-        console.log('marker', marker)
         let filterData = allItems.filter((val) => val?._id == marker)
-        console.log('filterData', filterData[0]._id)
         setActiveMarker(filterData[0]._id);
-        console.log(filterData[0]._id)
         let obj={
             _id:filterData[0]._id
             
@@ -77,6 +73,7 @@ function MyComponent() {
 
     return isLoaded ? (
         <div className='googlemapMainDiv'>
+            <h4>TOTAL ITEM:{allItems?.length}</h4>
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}

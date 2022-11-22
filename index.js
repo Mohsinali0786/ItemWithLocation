@@ -6,9 +6,10 @@ const server = require('http').createServer(app)
 const mongoose = require('mongoose')
 const cloudinary = require('cloudinary')
 const cors = require('cors')
-const fileupload = require('express-fileupload'); 
-
-
+const fileupload = require('express-fileupload');
+const { executeJob } = require('./helpers')
+const moment = require('moment')
+const schedule = require('node-schedule')
 
 // const { mongoose } = require('./config')
 
@@ -39,18 +40,19 @@ cloudinary.config({
 // })
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
-app.use(fileupload({useTempFiles: true}))
+app.use(fileupload({ useTempFiles: true }))
 
+let now = moment().add(1, 'days').startOf('day').format("YYYY-MM-DD HH:mm:ss")
+console.log('now', now)
+var then = "22-11-2022 22:34:30";
 
+let cond = moment.utc(moment(now, "YYYY-MM-DD HH:mm:ss").diff(moment(then, "YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss")
+console.log('cond', cond)
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, './client/build')))
+app.use(express.static(path.join(__dirname, '.-client/build')))
 app.use(cors());
 
 app.use('/api', require('./routes'))
-
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, './client/build/index.html'))
-// })
 
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({
@@ -58,6 +60,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
   parameterLimit: 50000
 }))
+schedule.scheduleJob('0 0 1 * *', () => executeJob())
 
 app.use(express.json())
 

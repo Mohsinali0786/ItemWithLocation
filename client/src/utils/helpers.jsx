@@ -6,27 +6,20 @@ import { getAllItems } from '../Redux/actions'
 import moment from 'moment'
 
 const getallData = (dispatch, userid) => {
-    console.log('function')
     axios.get(`${GET?.GETITEMS}/${userid}`)
         .then((res) => {
             const { data } = res
-            let filterData = data.data.filter((val, i) => {
-                console.log('val',val,i)
-                var now = moment().utc() //todays date
-                console.log('now',now,i)
-                var end = moment(val.updatedAt).utc()//todays date
-                console.log('end',end,i)
-                var duration = moment.duration(now.diff(end))
-                console.log('duration',duration._data.hours,i)
-                return !val.isTaken || (val.isTaken && duration._data.hours !== 0 )
-            })
-            console.log('filterData',filterData)
-            dispatch(getAllItems(filterData))
+
+            dispatch(getAllItems(data.data))
         })
         .catch((err) => {
             console.log('Err', err)
         })
 }
+
+'23-11-2022  12:00'
+'24-11-2022  8:00'
+
 
 const successMessage = (desc = 'Successfully Complete!') => {
     return message.success(desc)

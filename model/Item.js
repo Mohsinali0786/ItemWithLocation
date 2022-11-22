@@ -9,6 +9,7 @@ const itemSchema = moongoose.Schema({
     updatedAt: DATE,
     isTaken: BOOLEAN_DEFAULT,
     userId: REF_OBJECT_ID('User'),
+    isDeleted:BOOLEAN_DEFAULT,
     createdAt: CREATED_DATE,
 })
 

@@ -26,9 +26,7 @@ export default function MyGoogleLogin() {
         }
         axios.post(AUTH?.REGISTER, userdata)
             .then((res) => {
-                console.log(res.data, 'mydata')
                 if (res.data.success === true) {
-                    console.log(res.data,'===> 1')
                     successMessage(res.data.message)
                     // Swal.fire({
                     //     icon: 'success',
@@ -40,7 +38,6 @@ export default function MyGoogleLogin() {
 
                 }
                 else {
-                    console.log(res.data,'===> 2')
                     successMessage(res.data.message)
 
                     // Swal.fire({
