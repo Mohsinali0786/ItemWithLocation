@@ -21,10 +21,6 @@ function MyComponent() {
         lat: Number(geolocation.latitude),
         lng: Number(geolocation.longitude)
     })
-    const popupg = () => {
-
-    }
-
     useEffect(() => {
         if (geolocation !== null) {
             setCenter({
@@ -32,10 +28,7 @@ function MyComponent() {
                 lng: Number(geolocation.longitude)
             })
             dispatch(get_lat_long(center))
-            // get_lat_long(center)
-
         }
-
     }, [geolocation])
 
     const { isLoaded } = useJsApiLoader({
@@ -46,7 +39,6 @@ function MyComponent() {
     const [map, setMap] = React.useState(null)
 
     const onLoad = React.useCallback(async function callback(map) {
-        // console.log('=>',center.longitude,center.latitude)
         const bounds = await new window.google.maps.LatLngBounds(center);
         map.fitBounds(bounds);
 
@@ -73,7 +65,6 @@ function MyComponent() {
 
     return isLoaded ? (
         <div className='googlemapMainDiv'>
-            <h4>TOTAL ITEM:{allItems?.length}</h4>
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
@@ -91,7 +82,7 @@ function MyComponent() {
                                     allItems?.map((v, i) => {
 
                                         return (
-                                            <Marker onClick={() => handleActiveMarker(v?._id)} position={{ lat: v.latitude, lng: v.longitude }} >
+                                            <Marker key={i} onClick={() => handleActiveMarker(v?._id)} position={{ lat: v.latitude, lng: v.longitude }} >
 
                                                 {activeMarker === v?._id ? (
                                                     <InfoWindow onCloseClick={() => setActiveMarker(null)}>

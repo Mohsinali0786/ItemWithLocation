@@ -1,7 +1,6 @@
 import { UPLOADTEAMIMAGE, LATANDLONG, ISLOGGEDIN, LOGINUSER,GETALLITEMS } from '../types'
 let initialState = {
     isLoggedin: false,
-    // allItems:[]
 }
 const reducer = (state = initialState = {}, action) => {
     switch (action.type) {
@@ -29,7 +28,6 @@ const reducer = (state = initialState = {}, action) => {
                     LOGINUSER: action.payload
                 }
                 case GETALLITEMS:
-                    console.log('GETALLITEMS', action.payload)
         
                     return {
                         ...state,

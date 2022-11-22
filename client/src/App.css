@@ -16,7 +16,6 @@ html {
     padding: 40px 30px 20px;
     border-radius: 5px;
     transition: all 500ms ease;
-    /* margin: 50px 0 10px; */
 }
 
 .card-parent {
@@ -54,9 +53,7 @@ html {
 
 .form-button {
     border-radius: 4px !important;
-    /* background-color: #4bb146 !important; */
     color: #ffffff !important;
-    /* border: 1px solid #4bb146; */
 }
 
 .menu-flex {
@@ -123,12 +120,8 @@ html {
 .ant-modal-footer{
     border-top: none !important;
 }
-/* .ant-modal-body {
-    padding: 24px 24px 12px 24px !important;
-} */
 
 .text_area:focus {
-    /* box-shadow: #1890ff 0px 0px 2px; */
     outline: none;
 }
 
@@ -148,7 +141,6 @@ html {
 }
 .labels{
     text-align: left;
-    /* font-weight: bold; */
 }
 .uploadImage-mainDiv{
     margin-bottom: 5%;
@@ -161,69 +153,6 @@ html {
     background-color:  whitesmoke !important;
     color:  black !important;
 }
-/* .ant-upload.ant-upload-select:hover {
-    border: 1px dashed aqua !important;
-}
-
-.ant-modal-content {
-    background-color: none !important;
-    background-image: url("https://img.freepik.com/free-photo/plain-dark-black-wall-product-background_53876-129678.jpg") !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-}
-
-.ant-btn {
-    color: white !important;
-    background-color: transparent !important;
-}
-
-.ant-modal-footer .ant-btn+.ant-btn:not(.ant-dropdown-trigger) {
-    border: 1px solid white !important;
-}
-
-.ant-modal-footer .ant-btn+.ant-btn:not(.ant-dropdown-trigger):hover {
-    border: 1px solid aqua !important;
-}
-
-.ant-upload.ant-upload-select-picture-card {
-    background-color: transparent !important;
-}
-
-.ant-upload.ant-upload-select-picture-card>.ant-upload {
-    color: white !important;
-}
-
-.ant-upload.ant-upload-select-picture-card>.ant-upload:hover {
-    color: aqua !important;
-}
-
-.ant-modal-title {
-    color: white !important;
-}
-
-.ant-btn:hover {
-    border: 1px solid aqua !important;
-    color: aqua !important;
-}
-
-.ant-modal-close {
-    color: white !important;
-}
-
-.ant-modal-close:hover {
-    color: aqua !important;
-}
-
-.ant-modal-header {
-    border-bottom: none !important;
-    background-color: transparent !important;
-}
-
-.ant-modal-footer {
-    border-top: none !important;
-    padding-bottom: 24px !important;
-    padding-right: 22px !important;
-} */
 .mymapcss{
     width: 100% !important;
 }
@@ -267,7 +196,6 @@ html {
 }
 .infowindow-image{
     width: 50%;
-    /* margin-bottom: 5%; */
 }
 .infowindow-heading{
     font-size: large;
@@ -279,9 +207,6 @@ html {
 }
 .infowindow-text{
     font-size: medium;
-}
-.infowindow-div{
-    /* width: 25% !important; */
 }
 .gm-style-iw-c{
     width: 2% !important;

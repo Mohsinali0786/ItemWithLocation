@@ -44,7 +44,6 @@ const updateItem = (req, res) => {
     try {
         const { body } = req
         const { _id } = body
-        console.log(_id,'updated running')
 
         if (!_id) {
             return res.send({ success: false, message: 'Please fill all fields' })

@@ -3,7 +3,6 @@ const postApi = `/api/post`
 const authApi='api/auth'
 
 
-
 const AUTH = {
     REGISTER:`${authApi}/register`
 }

@@ -1,25 +1,21 @@
 import { useState } from 'react'
 import { Button, Modal } from 'antd'
-import { Alert } from '@mui/material'
-import UploadImage from '../uploadimage/uploadimg'
 import { POST } from '../../utils/apis'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import { getallData } from '../../utils/helpers'
 import { useDispatch } from 'react-redux'
 import AddIcon from '@mui/icons-material/Add'
-import { loginfirstalert } from '../../Redux/actions'
 import { Input, Form } from 'antd'
 import { successMessage, errorMessage } from '../../utils/helpers'
 import { message, Upload } from 'antd'
-import { UploadOutlined, FileOutlined } from '@ant-design/icons'
+import { UploadOutlined} from '@ant-design/icons'
 
 const { TextArea } = Input
 
 export default function ItemModal() {
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [description, setDescription] = useState('')
     const getdata = useSelector((state) => state?.itemReducer)
     const ISLOGGEDIN = useSelector((state) => state.itemReducer.ISLOGGEDIN)
     const userid = useSelector((state) => state.itemReducer.LOGINUSER?._id)
@@ -33,17 +29,13 @@ export default function ItemModal() {
         }
         else {
             errorMessage('Please Login First')
-            // LoginFirstMesage()
         }
     }
-
-
     const handleCancel = () => {
         setIsModalOpen(false)
     }
 
     const onFinish = (values) => {
-        console.log('Success:', values)
         setLoading(true)
         const formValues = new FormData()
         if (values?.file?.file) {
@@ -102,11 +94,9 @@ export default function ItemModal() {
                 title='Add Your Item'
                 okText={'Add Item'}
                 open={isModalOpen}
-                // onOk={validateForm}
                 onCancel={handleCancel}
             >
                 <div className='modal_div' id='modal-modal-description'>
-
                     <Form
                         name='basic'
                         labelCol={{
@@ -121,7 +111,6 @@ export default function ItemModal() {
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
                         form={form}
-
                     >
                         <Form.Item
                             name='file'
