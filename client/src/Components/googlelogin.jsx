@@ -34,7 +34,7 @@ export default function MyGoogleLogin() {
                     dispatch(loginUserData(data.logininfo))
                     successMessage(data.message)
                     // console.log('data.logininfo._id',data.logininfo._id)
-                    console.log('if running', data.logininfo._id)
+
 
                     getallData(dispatch, data.logininfo._id)
                 }
