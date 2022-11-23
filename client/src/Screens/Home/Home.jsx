@@ -9,7 +9,7 @@ import { getallData } from '../../utils/helpers';
 const Home = () => {
     const dispatch = useDispatch()
     const state=useSelector((state) => state)
-    console.log('state',state)
+
     const userid = useSelector((state) => state.itemReducer.LOGINUSER?._id)
     useEffect(()=>{
         getallData(dispatch,userid)

@@ -47,7 +47,6 @@ export default function ItemModal() {
         formValues.append('description', values?.description)
         formValues.append('latitude', Number(getdata?.latandlong?.latitude))
         formValues.append('longitude', Number(getdata?.latandlong?.longitude))
-        console.log('userid', userid)
         axios.post(POST?.ADDITEMS, formValues)
             .then((res) => {
                 const { data } = res
