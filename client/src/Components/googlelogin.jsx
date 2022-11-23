@@ -14,7 +14,7 @@ export default function MyGoogleLogin() {
     const userid = useSelector((state) => state.itemReducer.LOGINUSER?._id)
     const responseGoogle = (response) => {
         // errorMessage('Some thing went wrong')
-        console.log('E', response)
+        // console.log('response', response)
     }
     const handleLogin = (response) => {
         let userdata = {
@@ -22,12 +22,15 @@ export default function MyGoogleLogin() {
             name: response.profileObj.name,
             email: response.profileObj.email
         }
+        console.log('==>',AUTH?.REGISTER)
         axios.post(AUTH?.REGISTER, userdata)
             .then((res) => {
                 if (res.data.success === true) {
                     successMessage(res.data.message)
                     dispatch(isLoggedin(true))
                     dispatch(loginUserData(res.data.logininfo))
+                    getallData(dispatch, userid)
+
 
                 }
                 else {

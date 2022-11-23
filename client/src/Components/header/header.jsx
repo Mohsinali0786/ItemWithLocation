@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
 import LogoutIcon from '@mui/icons-material/Logout';
-import { isLoggedin } from '../../Redux/actions'
+import { isLoggedin,loginUserData,getAllItems} from '../../Redux/actions'
 import Swal from 'sweetalert2'
 import { LogoutMessage } from '../../utils/helpers'
 import MyGoogleLogin from '../googlelogin'
@@ -12,6 +12,9 @@ function Header() {
     const dispatch = useDispatch()
     const logout = () => {
         dispatch(isLoggedin(false))
+        dispatch(loginUserData(''))
+        dispatch(getAllItems([]))
+
         successMessage('Logout Successfully')
     }
     return (
