@@ -1,6 +1,6 @@
 const getApi = `/api/get`
 const postApi = `/api/post`
-const authApi='api/auth'
+const authApi='/api/auth'
 
 
 const AUTH = {
