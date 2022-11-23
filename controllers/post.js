@@ -1,6 +1,6 @@
 const { Item } = require('../model')
 const cloudinary = require('cloudinary')
-const moment=require('moment')
+const moment = require('moment')
 
 const addItem = async (req, res) => {
     try {
@@ -10,6 +10,7 @@ const addItem = async (req, res) => {
         if (!description || !latitude || !longitude || !userid) {
             return res.send({ success: false, message: 'Please fill all fields' })
         }
+        console.log('BODY', body)
         await cloudinary.uploader.upload(req.files.file.tempFilePath, function (result, err) {
             if (!result || err) {
                 console.log('err', result, err)
