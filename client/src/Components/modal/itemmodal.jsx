@@ -9,7 +9,7 @@ import AddIcon from '@mui/icons-material/Add'
 import { Input, Form } from 'antd'
 import { successMessage, errorMessage } from '../../utils/helpers'
 import { message, Upload } from 'antd'
-import { UploadOutlined} from '@ant-design/icons'
+import { UploadOutlined } from '@ant-design/icons'
 
 const { TextArea } = Input
 
@@ -41,11 +41,13 @@ export default function ItemModal() {
         if (values?.file?.file) {
             formValues.append('file', values?.file?.file)
         }
-        formValues.append('userid', userid)
+        if (userid) {
+            formValues.append('userid', userid)
+        }
         formValues.append('description', values?.description)
         formValues.append('latitude', Number(getdata?.latandlong?.latitude))
         formValues.append('longitude', Number(getdata?.latandlong?.longitude))
-
+        console.log('userid', userid)
         axios.post(POST?.ADDITEMS, formValues)
             .then((res) => {
                 const { data } = res
