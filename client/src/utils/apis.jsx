@@ -1,21 +1,21 @@
+// const API_PATH='https://item-with-map-location.herokuapp.com'
+const API_PATH='http://localhost:4000'
 const getApi = `/api/get`
 const postApi = `/api/post`
 const authApi='/api/auth'
 
 
 const AUTH = {
-    REGISTER:`https://item-with-map-location.herokuapp.com${authApi}/register`
+    REGISTER:`${authApi}/register`
 }
 const GET = {
-    GETITEMS:`https://item-with-map-location.herokuapp.com${getApi}/getitems`
+    GETITEMS:`${API_PATH}${getApi}/getitems`
 }
 
 const POST = {
-    ADDITEMS:`https://item-with-map-location.herokuapp.com${postApi}/additems`,
-    UPLOADIMAGE:`https://item-with-map-location.herokuapp.com${postApi}/uploadimage`,
-    UPDATEITEM:`https://item-with-map-location.herokuapp.com${postApi}/update-item`
-
-
+    ADDITEMS:`${API_PATH}${postApi}/additems`,
+    UPLOADIMAGE:`${API_PATH}${postApi}/uploadimage`,
+    UPDATEITEM:`${API_PATH}${postApi}/update-item`
 }
 
 export {

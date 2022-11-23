@@ -2,18 +2,18 @@ const { UserModal } = require('../model')
 
 const registerUser = async (req, res) => {
     try {
-        const {name,email,google_id} = req.body
+        const { name, email, google_id } = req.body
         console.log(req.body)
-        const UserExist = await UserModal.findOne({ email,google_id})
-        if(UserExist ){
-            return res.send({ success: true, logininfo: UserExist,message: 'Congratulations Login Successfully' })
+        const UserExist = await UserModal.findOne({ email, google_id })
+        if (UserExist) {
+            return res.send({ success: true, logininfo: UserExist, message: 'Congratulations Login Successfully' })
         }
         await UserModal.create({
             name,
             email,
             google_id
-        }).then(() => {
-            return res.send({ success: true, message: 'Congratulations Login Successfully' })
+        }).then((d) => {
+            return res.send({ success: true, message: 'Congratulations Login Successfully', logininfo: d })
         }).catch((err) => {
             console.log('err', err)
             return res.send({ success: false, message: 'Login Failed' })

@@ -3,6 +3,7 @@ import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-map
 import useGeolocation from "react-hook-geolocation";
 import { get_lat_long } from '../../Redux/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
+import NearMeIcon from '@mui/icons-material/NearMe';
 import { POST } from '../../utils/apis'
 import { Image } from 'antd';
 
@@ -74,6 +75,8 @@ function MyComponent() {
                 onLoad={onLoad}
                 onUnmount={onUnmount}
                 className='mymapcss'
+                options={{ zoomControl: true }}
+                onMouseOut	={()=>{map.panTo(center)}}
             >
                 <></>
                 {
@@ -108,6 +111,11 @@ function MyComponent() {
 
                 }
             </GoogleMap>
+            {/* <NearMeIcon onClick={() => {
+                map.panTo(center)
+                map.setZoom(15)
+            }} /> */}
+
 
         </div>
 

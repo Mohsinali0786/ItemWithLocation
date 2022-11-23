@@ -20,7 +20,7 @@ function Header() {
     return (
         <div className="header">
             {
-                ISLOGGEDIN ?
+                logginEmail ?
                     <div>
                         <p>{logginEmail}</p>
                         <LogoutIcon onClick={() => { logout() }} />

@@ -138,6 +138,7 @@ html {
     margin-right: 3% !important;
     margin-top: -50px !important;
     font-size: 70px !important;
+    cursor: pointer;
 }
 .labels{
     text-align: left;

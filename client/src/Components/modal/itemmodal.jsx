@@ -24,7 +24,7 @@ export default function ItemModal() {
     const [fileList, setFileList] = useState([])
 
     const showModal = () => {
-        if (ISLOGGEDIN) {
+        if (userid) {
             setIsModalOpen(true)
         }
         else {
