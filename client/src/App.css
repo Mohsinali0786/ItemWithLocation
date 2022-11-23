@@ -167,6 +167,9 @@ html {
 .mymarker{
     padding-left: 10px;
 }
+.logiut-btn{
+    cursor: pointer;
+}
 .googleloginbtn{
     background-color: black !important;
     color: white !important;

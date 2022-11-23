@@ -23,7 +23,7 @@ function Header() {
                 logginEmail ?
                     <div>
                         <p>{logginEmail}</p>
-                        <LogoutIcon onClick={() => { logout() }} />
+                        <LogoutIcon className="logiut-btn" onClick={() => { logout() }} />
                     </div>
                     :
                     <MyGoogleLogin/>

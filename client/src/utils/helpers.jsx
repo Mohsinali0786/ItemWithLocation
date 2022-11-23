@@ -7,7 +7,6 @@ const getallData = (dispatch, userid) => {
     axios.get(`${GET?.GETITEMS}/${userid}`)
         .then((res) => {
             const { data } = res
-
             dispatch(getAllItems(data.data))
         })
         .catch((err) => {

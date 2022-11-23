@@ -1,5 +1,5 @@
-const API_PATH='https://item-with-map-location.herokuapp.com'
-// const API_PATH='http://localhost:4000'
+// const API_PATH='https://item-with-map-location.herokuapp.com'
+const API_PATH='http://localhost:4000'
 const getApi = `/api/get`
 const postApi = `/api/post`
 const authApi='/api/auth'

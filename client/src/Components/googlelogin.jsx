@@ -12,7 +12,8 @@ import { errorMessage } from '../utils/helpers';
 
 export default function MyGoogleLogin() {
     const dispatch = useDispatch()
-    const userid = useSelector((state) => state.itemReducer.LOGINUSER.userid)
+    const userid = useSelector((state) => state.itemReducer?.LOGINUSER?._id)
+
 
     const responseGoogle = (response) => {
         // errorMessage('Some thing went wrong')
@@ -30,16 +31,15 @@ export default function MyGoogleLogin() {
             .then((res) => {
                 const { data } = res
                 if (data.success) {
-                    dispatch(isLoggedin(true))
                     dispatch(loginUserData(data.logininfo))
                     successMessage(data.message)
+                    // console.log('data.logininfo._id',data.logininfo._id)
+                    console.log('if running', data.logininfo._id)
 
-                    getallData(dispatch, userid)
+                    getallData(dispatch, data.logininfo._id)
                 }
                 else {
                     successMessage(data.message)
-                    dispatch(isLoggedin(true))
-                    dispatch(loginUserData(data.logininfo))
                     getallData(dispatch, userid)
                 }
             })

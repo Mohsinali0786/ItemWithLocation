@@ -55,6 +55,8 @@ export default function ItemModal() {
                     successMessage(data.message)
                     setLoading(false)
                     setIsModalOpen(false)
+                    form.resetFields()
+                    setFileList([])
                     getallData(dispatch, userid)
                 } else {
                     setLoading(false)

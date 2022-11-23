@@ -1,11 +1,14 @@
 const { Item } = require('../model')
 const getItems = async (req, res) => {
     try {
-        Item.find({ userid: req?.params?.id, isDeleted: false }, async (err, data) => {
+        const { params } = req
+        const { id } = params
+        Item.find({ userId: id, isDeleted: false }, async (err, data) => {
             if (err || !data) {
                 return res.send({ success: false, message: 'No user found!' })
             }
 
+            console.log(data)
             return res.send({ success: true, data })
         }).populate('userId')
     }
